@@ -26,7 +26,8 @@ program
     "Algorand indexer server",
     "https://testnet-idx.voi.nodly.io"
   )
-  .option("-l, --log-file <path>", "File to log results", "logfile.txt");
+  .option("-l, --log-file <path>", "File to log results", "logfile.txt")
+  .option("--dry-run", "Simulate the run without executing transactions");
 
 program.parse(process.argv);
 
@@ -122,7 +123,9 @@ const processFile = async (filePath) => {
           );
           process.exit(1);
         }
-        await signSendAndConfirm(arc200_transferR.txns, sk);
+        if (!options.dryRun) {
+          await signSendAndConfirm(arc200_transferR.txns, sk);
+        }
         logMessage(
           `Successfully processed tokenId ${tokenId} for address ${address}`
         );
