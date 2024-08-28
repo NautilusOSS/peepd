@@ -42,6 +42,14 @@ A Command-Line Interface (CLI) tool for transferring tokens on the Algorand bloc
     INDEXER_SERVER=https://testnet-idx.voi.nodly.io
     ```
 
+3. **Source cli shell function (optional):**
+
+    Makes `cli` command available in shell environment.
+
+    ```env
+    source command.sh # 
+    ```
+
 ## Usage
 
 Run the CLI script using Node.js:
